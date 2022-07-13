@@ -46,18 +46,26 @@
                 </ul>
             </div>
         </main>
-    </div>
-
-    
+        <Toast 
+            :show="alert.show" 
+            :title="alert.title" 
+            :message="alert.message" 
+            @toast-close="alert.show = false"
+        ></Toast>         
+    </div>    
 </template>
 
 <script>
 import store from "../../store/index";
 import groupService from "../../services/GroupService";
+import Toast from '@/components/partials/Toast';
 
 export default {
 
     name: "AdminContainer",
+    components : {
+        Toast
+    }, 
     mounted() {
         this.authUser = store.getters.getAuthUser;
         this.fetchGroups();
@@ -67,7 +75,12 @@ export default {
             authUser: {
                 full_name: ""
             },
-            groups : []
+            groups : [],
+            alert: {
+                show: false,
+                title: '',
+                message: '',
+            }            
         };
     },
     methods: {
@@ -86,11 +99,19 @@ export default {
             groupService.completeCourse(group_id)
             .then((response) => {
                 console.log(response);
+                this.showAlert('Certification completed successfully');
             },
             (error) => {
                 console.log(error);
             });
-        }
+        },
+        showAlert(message, time=3000) {
+            this.alert.show = true;
+            this.alert.title = message;
+            setTimeout(() => {
+                this.alert.show = false;
+            }, time);
+        },        
     }
 };
 </script>

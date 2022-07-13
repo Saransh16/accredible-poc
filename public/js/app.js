@@ -2167,10 +2167,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/index */ "./resources/js/store/index.js");
 /* harmony import */ var _services_GroupService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/GroupService */ "./resources/js/services/GroupService.js");
+/* harmony import */ var _components_partials_Toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/partials/Toast */ "./resources/js/components/partials/Toast.vue");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AdminContainer",
+  components: {
+    Toast: _components_partials_Toast__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
   mounted: function mounted() {
     this.authUser = _store_index__WEBPACK_IMPORTED_MODULE_0__["default"].getters.getAuthUser;
     this.fetchGroups();
@@ -2180,7 +2185,12 @@ __webpack_require__.r(__webpack_exports__);
       authUser: {
         full_name: ""
       },
-      groups: []
+      groups: [],
+      alert: {
+        show: false,
+        title: '',
+        message: ''
+      }
     };
   },
   methods: {
@@ -2195,11 +2205,25 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     completeCourse: function completeCourse(group_id) {
+      var _this2 = this;
+
       _services_GroupService__WEBPACK_IMPORTED_MODULE_1__["default"].completeCourse(group_id).then(function (response) {
         console.log(response);
+
+        _this2.showAlert('Certification completed successfully');
       }, function (error) {
         console.log(error);
       });
+    },
+    showAlert: function showAlert(message) {
+      var _this3 = this;
+
+      var time = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3000;
+      this.alert.show = true;
+      this.alert.title = message;
+      setTimeout(function () {
+        _this3.alert.show = false;
+      }, time);
     }
   }
 });
@@ -2855,7 +2879,18 @@ var render = function render() {
         }
       }
     }, [_vm._v("Complete")])])])])])])]);
-  }), 0)])])]);
+  }), 0)])]), _vm._v(" "), _c("Toast", {
+    attrs: {
+      show: _vm.alert.show,
+      title: _vm.alert.title,
+      message: _vm.alert.message
+    },
+    on: {
+      "toast-close": function toastClose($event) {
+        _vm.alert.show = false;
+      }
+    }
+  })], 1);
 };
 
 var staticRenderFns = [];
