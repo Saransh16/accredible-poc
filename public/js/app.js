@@ -2123,8 +2123,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _services_CertificateService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/CertificateService */ "./resources/js/services/CertificateService.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'Certificates'
+  name: 'Certificates',
+  mounted: function mounted() {
+    this.fetchCertificates();
+  },
+  data: function data() {
+    return {
+      certificates: []
+    };
+  },
+  methods: {
+    fetchCertificates: function fetchCertificates() {
+      _services_CertificateService__WEBPACK_IMPORTED_MODULE_0__["default"].index().then(function (response) {
+        console.log(response);
+      }, function (error) {
+        console.log(error);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -3405,6 +3424,9 @@ var API = {
   },
   completeCourse: function completeCourse() {
     return "".concat(Base.apiUrl(), "/certifications");
+  },
+  getCertificates: function getCertificates() {
+    return "".concat(Base.apiUrl(), "/certifications");
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (API);
@@ -3621,6 +3643,37 @@ var BaseService = {
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BaseService);
+
+/***/ }),
+
+/***/ "./resources/js/services/CertificateService.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/services/CertificateService.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api.js */ "./resources/js/api.js");
+/* harmony import */ var _BaseService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BaseService */ "./resources/js/services/BaseService.js");
+
+
+var CertificateService = {
+  index: function index() {
+    return new Promise(function (res, rej) {
+      axios.get(_api_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCertificates(), {}).then(function (response) {
+        return res(response.data);
+      }, function (error) {
+        _BaseService__WEBPACK_IMPORTED_MODULE_1__["default"].handleError(error);
+        return rej(error);
+      });
+    });
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CertificateService);
 
 /***/ }),
 

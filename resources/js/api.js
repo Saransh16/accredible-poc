@@ -37,6 +37,10 @@ const API = {
 
     completeCourse: () => {
         return `${Base.apiUrl()}/certifications`
+    },
+
+    getCertificates: () => {
+        return `${Base.apiUrl()}/certifications`
     }
 };
 

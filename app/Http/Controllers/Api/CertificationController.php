@@ -32,4 +32,11 @@ class CertificationController extends Controller
 
         return response()->success($certificate);
     }
+
+    public function index()
+    {
+        $certificates = Certification::where('user_id', auth()->user()->id)->with('group')->get();
+
+        return response()->success($certificates);
+    }
 }

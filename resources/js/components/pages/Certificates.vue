@@ -15,7 +15,28 @@
 </template>
 
 <script>
+import certificateService from "../../services/CertificateService";
+
 export default {
-    name: 'Certificates'
+    name: 'Certificates',
+    mounted() {
+        this.fetchCertificates();
+    },
+    data:() => {
+        return {
+            certificates: []
+        }
+    },
+    methods: {
+        fetchCertificates() {
+            certificateService.index()
+            .then((response) => {
+                console.log(response);
+            },
+            (error) => {
+                console.log(error);
+            });
+        }
+    }
 }
 </script>

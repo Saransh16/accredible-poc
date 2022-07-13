@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Group;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Certification extends Model
 {
@@ -17,4 +18,9 @@ class Certification extends Model
         'expired_on',
         'group_id'
     ];
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
 }
