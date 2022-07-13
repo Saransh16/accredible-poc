@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', 'AuthController@register')->name('Register');
 Route::post('/login', 'AuthController@login')->name('Login');
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:sanctum')->group(function () {
+
+    Route::get('/groups', 'GroupController@index');
+});

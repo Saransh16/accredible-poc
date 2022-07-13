@@ -45,11 +45,9 @@ class AuthController extends Controller
             'password' => Hash::make($inputs['password']),
         ]);
 
-        $group = Group::first();
+        // $group = Group::first(); 
 
-        $credential = $this->accredible->create_credential($user->name, $user->email, $group->id, Carbon::now()->format('d/m/Y'), Carbon::now()->addDays('1')->format('d/m/Y'));
-
-        // dd($credential);
+        // $credential = $this->accredible->create_credential($user->name, $user->email, $group->id, Carbon::now()->format('d/m/Y'), Carbon::now()->addDays('1')->format('d/m/Y'));
 
         auth()->loginUsingId($user->id);
 

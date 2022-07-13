@@ -6,7 +6,7 @@ const GroupService = {
     index() {
         return new Promise((res, rej) => {
             axios.get(api.getGroups(),
-            {}) 
+            {})
             .then((response) => {
                 return res(response.data);
             },

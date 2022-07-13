@@ -15,8 +15,6 @@ class GroupController extends Controller
 
     public function index()
     {
-        dd("here");
-
         $groups = Group::all();
 
         return response()->success($groups);
