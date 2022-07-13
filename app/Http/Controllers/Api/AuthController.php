@@ -83,8 +83,10 @@ class AuthController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function logout()
     {
-        //
+        $token = auth()->user()->tokens()->delete();
+
+        return response()->success('Logged out');
     }
 }

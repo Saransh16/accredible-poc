@@ -23,4 +23,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/certifications', 'CertificationController@index');
 
     Route::post('/certifications', 'CertificationController@create');
+
+    Route::post('/logout', 'AuthController@logout');
 });

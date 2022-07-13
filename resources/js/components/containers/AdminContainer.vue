@@ -195,6 +195,7 @@
 <script>
 import NavLinks from "@/components/partials/NavLinks.vue";
 import store from "../../store/index";
+import authService from "@/services/AuthService.js";
 
 export default {
     name: "AdminContainer",
@@ -218,5 +219,13 @@ export default {
     mounted() {
         this.authUser = store.getters.getAuthUser;
     },
+    methods: {
+        logout() {
+            authService.logout()
+            .then(() => {
+                this.$router.push({name: "RegisterPage"});
+            });
+        },
+    }
 };
 </script>

@@ -41,7 +41,11 @@ const API = {
 
     getCertificates: () => {
         return `${Base.apiUrl()}/certifications`
-    }
+    },
+
+    logout: () => {
+        return `${Base.apiUrl()}/logout`;
+    },
 };
 
 export default API;

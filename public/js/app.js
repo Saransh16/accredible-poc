@@ -2084,6 +2084,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _components_partials_NavLinks_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/components/partials/NavLinks.vue */ "./resources/js/components/partials/NavLinks.vue");
 /* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../store/index */ "./resources/js/store/index.js");
+/* harmony import */ var _services_AuthService_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/services/AuthService.js */ "./resources/js/services/AuthService.js");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2107,6 +2109,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.authUser = _store_index__WEBPACK_IMPORTED_MODULE_1__["default"].getters.getAuthUser;
+  },
+  methods: {
+    logout: function logout() {
+      var _this = this;
+
+      _services_AuthService_js__WEBPACK_IMPORTED_MODULE_2__["default"].logout().then(function () {
+        _this.$router.push({
+          name: "RegisterPage"
+        });
+      });
+    }
   }
 });
 
@@ -3545,6 +3558,9 @@ var API = {
   },
   getCertificates: function getCertificates() {
     return "".concat(Base.apiUrl(), "/certifications");
+  },
+  logout: function logout() {
+    return "".concat(Base.apiUrl(), "/logout");
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (API);
@@ -3721,6 +3737,15 @@ var AuthService = {
       }, function (error) {
         _BaseService__WEBPACK_IMPORTED_MODULE_1__["default"].handleError(error);
         return rej(error.response.data);
+      });
+    });
+  },
+  logout: function logout() {
+    return new Promise(function (res, rej) {
+      axios.post(_api_js__WEBPACK_IMPORTED_MODULE_0__["default"].logout(), {}, {}).then(function (response) {
+        return res(response.data);
+      }, function (error) {
+        return rej(error);
       });
     });
   }

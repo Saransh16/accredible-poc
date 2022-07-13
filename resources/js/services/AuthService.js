@@ -28,7 +28,23 @@ const AuthService = {
                 }
             );
         }); 
-    }
+    },
+
+    logout() {
+        return new Promise((res, rej) => {
+            axios.post(api.logout(), {},
+            {}
+            )
+            .then(
+                response => {
+                    return res(response.data);
+                },
+                error => {
+                    return rej(error);
+                }
+            );
+        });
+    },
 };
 
 export default AuthService;
