@@ -5,6 +5,7 @@ import LoginPage from '@/components/pages/LoginPage.vue';
 import RegisterPage from '@/components/pages/RegisterPage.vue';
 import Dashboard from '@/components/pages/Dashboard.vue';
 import AdminContainer from '@/components/containers/AdminContainer.vue';
+import Certificates from '@/components/pages/Certificates.vue';
 
 Vue.use(Router);
 
@@ -30,7 +31,12 @@ function configRoutes() {
                 path: "/dashboard",
                 name: "dashboard",
                 component: Dashboard
-              }          
+              },
+              {
+                path: "/certificates",
+                name: "certificates",
+                component: Certificates
+              }         
             ]
         }
     ]
