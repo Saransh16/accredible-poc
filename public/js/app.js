@@ -2286,6 +2286,8 @@ __webpack_require__.r(__webpack_exports__);
       _services_AuthService_js__WEBPACK_IMPORTED_MODULE_0__["default"].register(this.form).then(function (res) {
         console.log(res);
 
+        _this.$store.commit('setAuthUser', res.data);
+
         _this.$router.push({
           'name': 'dashboard'
         });
@@ -3621,6 +3623,7 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_2_
   },
   mutations: {
     setAuthUser: function setAuthUser(state, payload) {
+      console.log("payload :", payload);
       state.authUser = payload;
     }
   },

@@ -116,6 +116,7 @@ export default {
             authService.register(this.form)
             .then((res) => {
                 console.log(res);
+                this.$store.commit('setAuthUser', res.data);
                 this.$router.push({'name' : 'dashboard'});
             },
             (error) => {
