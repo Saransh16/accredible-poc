@@ -33,6 +33,10 @@ const API = {
 
     getGroups: () => {
         return `${Base.apiUrl()}/groups`;
+    },
+
+    completeCourse: () => {
+        return `${Base.apiUrl()}/certifications`
     }
 };
 

@@ -18,8 +18,9 @@ class CreateCertificationsTable extends Migration
             $table->string('user_id');
             $table->string('credential_id');
             $table->string('url');
-            $table->date('issued_on');
-            $table->date('expired_on')->nullable();
+            $table->string('issued_on');
+            $table->string('group_id');
+            $table->string('expired_on')->nullable();
             $table->timestamps();
         });
     }

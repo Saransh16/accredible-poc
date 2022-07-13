@@ -2151,6 +2151,13 @@ __webpack_require__.r(__webpack_exports__);
       }, function (error) {
         console.log(error);
       });
+    },
+    completeCourse: function completeCourse(group_id) {
+      _services_GroupService__WEBPACK_IMPORTED_MODULE_1__["default"].completeCourse(group_id).then(function (response) {
+        console.log(response);
+      }, function (error) {
+        console.log(error);
+      });
     }
   }
 });
@@ -2667,20 +2674,25 @@ var render = function render() {
       staticClass: "font-medium text-indigo-600 truncate"
     }, [_vm._v(_vm._s(group.course_name))]), _vm._v(" "), _c("p", {
       staticClass: "ml-1 flex-shrink-0 font-normal text-gray-500"
-    }, [_vm._v("(" + _vm._s(group.name) + ")")])])]), _vm._v(" "), _vm._m(0, true)])])])]);
+    }, [_vm._v("(" + _vm._s(group.name) + ")")])])]), _vm._v(" "), _c("div", {
+      staticClass: "mt-4 flex-shrink-0 sm:mt-0 sm:ml-5"
+    }, [_c("div", {
+      staticClass: "flex overflow-hidden -space-x-1"
+    }, [_c("button", {
+      staticClass: "inline-flex items-center px-2.5 py-1.5 border border-transparent text-sm font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+      attrs: {
+        type: "button"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.completeCourse(group.id);
+        }
+      }
+    }, [_vm._v("Complete")])])])])])])]);
   }), 0)])])]);
 };
 
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "mt-4 flex-shrink-0 sm:mt-0 sm:ml-5"
-  }, [_c("div", {
-    staticClass: "flex overflow-hidden -space-x-1"
-  })]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -3326,6 +3338,9 @@ var API = {
   },
   getGroups: function getGroups() {
     return "".concat(Base.apiUrl(), "/groups");
+  },
+  completeCourse: function completeCourse() {
+    return "".concat(Base.apiUrl(), "/certifications");
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (API);
@@ -3558,6 +3573,18 @@ var GroupService = {
   index: function index() {
     return new Promise(function (res, rej) {
       axios.get(_api_js__WEBPACK_IMPORTED_MODULE_0__["default"].getGroups(), {}).then(function (response) {
+        return res(response.data);
+      }, function (error) {
+        _BaseService__WEBPACK_IMPORTED_MODULE_1__["default"].handleError(error);
+        return rej(error);
+      });
+    });
+  },
+  completeCourse: function completeCourse(group_id) {
+    return new Promise(function (res, rej) {
+      axios.post(_api_js__WEBPACK_IMPORTED_MODULE_0__["default"].completeCourse(), {
+        group_id: group_id
+      }, {}).then(function (response) {
         return res(response.data);
       }, function (error) {
         _BaseService__WEBPACK_IMPORTED_MODULE_1__["default"].handleError(error);

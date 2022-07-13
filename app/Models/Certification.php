@@ -14,6 +14,7 @@ class Certification extends Model
         'credential_id',
         'url',
         'issued_on',
-        'expired_on'
+        'expired_on',
+        'group_id'
     ];
 }

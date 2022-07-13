@@ -15,7 +15,24 @@ const GroupService = {
                 return rej(error);
             })            
         })
+    },
+
+    completeCourse(group_id) {
+        return new Promise((res, rej) => {
+            axios.post(api.completeCourse(),
+            {
+                group_id : group_id
+            },
+            {})
+            .then((response) => {
+                return res(response.data);
+            },
+            (error) => {
+                baseService.handleError(error);
+                return rej(error);
+            });
+        })
     }
-};
+}
 
 export default GroupService;

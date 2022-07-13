@@ -11,7 +11,6 @@
             
             <div class="mt-2 mx-auto px-4 sm:px-6 md:px-8 border border-gray-300"></div>
 
-            <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="bg-white shadow overflow-hidden sm:rounded-md mx-12 my-12">
                 <ul role="list" class="divide-y divide-gray-200">
                     <li v-for="group in groups" :key="group.id">
@@ -37,13 +36,7 @@
                                     </div>
                                     <div class="mt-4 flex-shrink-0 sm:mt-0 sm:ml-5">
                                         <div class="flex overflow-hidden -space-x-1">
-                                            <!-- <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Dries Vincent">
-
-                                            <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Lindsay Walton">
-
-                                            <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Courtney Henry">
-
-                                            <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Tom Cook"> -->
+                                            <button @click="completeCourse(group.id)" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-sm font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Complete</button>
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +79,17 @@ export default {
             },
             (error) => {
                 console.log(error);
-            }) 
+            });
+        },
+
+        completeCourse(group_id) {
+            groupService.completeCourse(group_id)
+            .then((response) => {
+                console.log(response);
+            },
+            (error) => {
+                console.log(error);
+            });
         }
     }
 };

@@ -19,4 +19,6 @@ Route::post('/login', 'AuthController@login')->name('Login');
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/groups', 'GroupController@index');
+
+    Route::post('/certifications', 'CertificationController@create');
 });
