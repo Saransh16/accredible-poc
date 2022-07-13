@@ -2143,8 +2143,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     fetchGroups: function fetchGroups() {
+      var _this = this;
+
       _services_GroupService__WEBPACK_IMPORTED_MODULE_1__["default"].index().then(function (response) {
         console.log(response);
+        _this.groups = response.data;
       }, function (error) {
         console.log(error);
       });
@@ -2622,10 +2625,62 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_vm._v("\n    Welcome " + _vm._s(_vm.authUser.name) + "\n")]);
+  return _c("div", {
+    staticClass: "max-h-screen flex flex-col w-0 flex-1 mt-12 overflow-y-scroll"
+  }, [_c("main", {
+    staticClass: "flex-1 relative z-0 overflow-y-scroll pt-2 pb-6 focus:outline-none md:py-6",
+    attrs: {
+      tabindex: "0"
+    }
+  }, [_c("div", {
+    staticClass: "mx-auto px-4 sm:px-6 md:px-8 flex justify-between"
+  }, [_c("div", {
+    staticClass: "flex-1 min-w-0"
+  }, [_c("h1", {
+    staticClass: "text-2xl font-semibold text-gray-900"
+  }, [_vm._v("Welcome " + _vm._s(_vm.authUser.name))])])]), _vm._v(" "), _c("div", {
+    staticClass: "mt-2 mx-auto px-4 sm:px-6 md:px-8 border border-gray-300"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "bg-white shadow overflow-hidden sm:rounded-md mx-12 my-12"
+  }, [_c("ul", {
+    staticClass: "divide-y divide-gray-200",
+    attrs: {
+      role: "list"
+    }
+  }, _vm._l(_vm.groups, function (group) {
+    return _c("li", {
+      key: group.id
+    }, [_c("a", {
+      staticClass: "block hover:bg-gray-50",
+      attrs: {
+        href: "#"
+      }
+    }, [_c("div", {
+      staticClass: "px-4 py-4 flex items-center sm:px-6"
+    }, [_c("div", {
+      staticClass: "min-w-0 flex-1 sm:flex sm:items-center sm:justify-between"
+    }, [_c("div", {
+      staticClass: "truncate"
+    }, [_c("div", {
+      staticClass: "flex text-sm"
+    }, [_c("p", {
+      staticClass: "font-medium text-indigo-600 truncate"
+    }, [_vm._v(_vm._s(group.course_name))]), _vm._v(" "), _c("p", {
+      staticClass: "ml-1 flex-shrink-0 font-normal text-gray-500"
+    }, [_vm._v("(" + _vm._s(group.name) + ")")])])]), _vm._v(" "), _vm._m(0, true)])])])]);
+  }), 0)])])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "mt-4 flex-shrink-0 sm:mt-0 sm:ml-5"
+  }, [_c("div", {
+    staticClass: "flex overflow-hidden -space-x-1"
+  })]);
+}];
 render._withStripped = true;
 
 
