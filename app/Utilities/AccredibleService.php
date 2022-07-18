@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 
 class AccredibleService {
 
-	private $api_key = "27e39a8da3e4f026db44f5dfbee6b2bf";
+	private $api_key = "e3e51444a4e2d2f0ae988942af129052";
 
 	private $api_endpoint = "https://api.accredible.com/v1/";
 
@@ -163,7 +163,7 @@ class AccredibleService {
 		    	"course_name" => $course_name,
 				"course_description" => $course_description,
     			"course_link" => $course_link,
-                'certificate_design_id' => 247515
+                'certificate_design_id' => 247808
 		    )
 		);
 

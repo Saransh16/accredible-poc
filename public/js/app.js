@@ -3625,7 +3625,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var ENV = "development";
 var DEAFULT_API_VERSION = "v1";
-var API_URL_LOCAL = "http://localhost:8000";
+var API_URL_LOCAL = "http://localhost:8001";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   ENV: ENV,
   API_URL_LOCAL: API_URL_LOCAL,

@@ -1,7 +1,7 @@
 export const ENV = process.env.NODE_ENV;
 
 export const DEAFULT_API_VERSION = "v1";
-export const API_URL_LOCAL = "http://localhost:8000";
+export const API_URL_LOCAL = "http://localhost:8001";
 
 export default {
     ENV,
