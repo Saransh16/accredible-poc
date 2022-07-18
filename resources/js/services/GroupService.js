@@ -17,6 +17,34 @@ const GroupService = {
         })
     },
 
+    getGroup(group_id) {
+        return new Promise((res,rej) => {
+            axios.get(api.getGroup(group_id),
+            {})
+            .then((response) => {
+                return res(response.data);
+            },
+            (error) => {
+                baseService.handleError(error);
+                return rej(error);
+            })
+        })
+    },
+
+    getDesign(design_id) {
+        return new Promise((res,rej) => {
+            axios.get(api.getDesign(design_id),
+            {})
+            .then((response) => {
+                return res(response.data);
+            },
+            (error) => {
+                baseService.handleError(error);
+                return rej(error);
+            })
+        })
+    },
+
     completeCourse(group_id) {
         return new Promise((res, rej) => {
             axios.post(api.completeCourse(),

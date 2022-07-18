@@ -7,6 +7,7 @@ import Dashboard from '@/components/pages/Dashboard.vue';
 import AdminContainer from '@/components/containers/AdminContainer.vue';
 import Certificates from '@/components/pages/Certificates.vue';
 import ViewCourse from '@/components/pages/ViewCourse.vue';
+import Settings from '@/components/pages/Settings.vue';
 
 Vue.use(Router);
 
@@ -42,6 +43,11 @@ function configRoutes() {
                 path: "/courses/:id",
                 name: "view-course",
                 component: ViewCourse
+              },
+              {
+                path: "/settings",
+                name: "settings",
+                component: Settings
               }
             ]
         }

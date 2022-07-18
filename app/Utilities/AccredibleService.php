@@ -232,6 +232,15 @@ class AccredibleService {
 		return $result;
 	}
 
+	public function get_design($id){
+        $client = new \GuzzleHttp\Client();
+
+        $response = $client->get($this->api_endpoint.'designs/'. $id, array('headers' =>  array('Authorization' => 'Token token="'.$this->getAPIKey().'"')));
+
+        $result = json_decode($response->getBody(), true);
+        return $result;
+    }
+
     public function get_designs($page_size = nil, $page = 1){
         $client = new \GuzzleHttp\Client();
 

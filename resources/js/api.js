@@ -43,6 +43,14 @@ const API = {
         return `${Base.apiUrl()}/certifications`
     },
 
+    getGroup: (group_id) => {
+        return `${Base.apiUrl()}/groups/${group_id}`;
+    },
+
+    getDesign: (design_id) => {
+        return `${Base.apiUrl()}/designs/${design_id}`;
+    },
+
     logout: () => {
         return `${Base.apiUrl()}/logout`;
     },
