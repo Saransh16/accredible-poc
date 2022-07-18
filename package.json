@@ -10,6 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@tailwindcss/aspect-ratio": "^0.4.0",
         "autoprefixer": "^10.3.1",
         "axios": "^0.21",
         "bootstrap": "^4.6.0",

@@ -42,12 +42,22 @@
                                                 Remarks
                                             </label>
                                             <div class="mt-1">
-                                                <input type="text" v-model="form.remarks" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                <textarea v-model="form.remarks" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                                             </div>                                
                                         </div>
+
+                                        <div class="space-y-1">
+                                            <label class="block text-sm font-normal text-gray-700">
+                                                Expiry Date
+                                            </label>
+                                            <label class=""></label>
+                                            <div class="mt-1">
+                                                <input type="text" v-model="form.expiry_date" placeholder="DD/MM/YYYY" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            </div>                                
+                                        </div>                                        
                            
                                         <div>
-                                            <button type="submit" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-sm font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            <button type="submit" class="w-full flex justify-center px-2.5 py-1.5 border border-transparent text-sm font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                 Complete Course
                                             </button>
                                         </div>
@@ -94,7 +104,8 @@ export default {
             design : [],
             form : {
                 company_name : '',
-                remarks : ''
+                remarks : '',
+                expiry_date : ''
             }
         }
     },
@@ -124,6 +135,7 @@ export default {
         },
 
         completeCourse() {
+            console.log(this.form);
             groupService.completeCourse(this.group.id, this.form)
             .then((response) => {
                 console.log(response);

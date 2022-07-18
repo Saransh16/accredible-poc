@@ -19,7 +19,10 @@ class CertificationController extends Controller
     {
         $inputs = request()->all();
 
-        $credential = $this->accredible->create_credential(auth()->user()->name, auth()->user()->email, $inputs['group_id'], Carbon::now()->format('d/m/Y'), Carbon::now()->addDays('1')->format('d/m/Y'), $inputs['attributes']);
+        $issue_date = Carbon::now()->format('d/m/Y');
+        $expiry_date = $inputs['attributes']['expiry_date'] ?? Carbon::now()->addDays('1')->format('d/m/Y');
+
+        $credential = $this->accredible->create_credential(auth()->user()->name, auth()->user()->email, $inputs['group_id'], $issue_date, $expiry_date, $inputs['attributes']);
 
         $certificate = Certification::create([
             'user_id' => auth()->user()->id,

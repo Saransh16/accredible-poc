@@ -2426,7 +2426,8 @@ __webpack_require__.r(__webpack_exports__);
       design: [],
       form: {
         company_name: '',
-        remarks: ''
+        remarks: '',
+        expiry_date: ''
       }
     };
   },
@@ -2456,6 +2457,7 @@ __webpack_require__.r(__webpack_exports__);
     completeCourse: function completeCourse() {
       var _this3 = this;
 
+      console.log(this.form);
       _services_GroupService__WEBPACK_IMPORTED_MODULE_0__["default"].completeCourse(this.group.id, this.form).then(function (response) {
         console.log(response);
 
@@ -2822,7 +2824,7 @@ var render = function render() {
     }, [_c("div", {
       staticClass: "space-y-4 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6 sm:space-y-0"
     }, [_c("div", {
-      staticClass: "aspect-w-2 aspect-h-2 sm:aspect-w-2 sm:aspect-h-3"
+      staticClass: "aspect-w-2 aspect-h-2"
     }, [_c("img", {
       staticClass: "object-cover shadow-lg rounded-lg",
       attrs: {
@@ -2845,7 +2847,7 @@ var render = function render() {
     }, [_vm._v(_vm._s(certificate.group.name))]), _vm._v(" "), _c("div", {
       staticClass: "mt-2 flex"
     }, [_c("div", {
-      staticClass: "flex items-center text-sm text-gray-500"
+      staticClass: "flex items-center text-md text-gray-500"
     }, [_c("svg", {
       staticClass: "flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400",
       attrs: {
@@ -2860,10 +2862,10 @@ var render = function render() {
         d: "M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z",
         "clip-rule": "evenodd"
       }
-    })]), _vm._v(" "), _c("p", [_vm._v("\n                                                            Issued On\n                                                            "), _c("span", [_vm._v(_vm._s(certificate.issued_on))])])])]), _vm._v(" "), _c("div", {
+    })]), _vm._v(" "), _c("p", [_vm._v("\n                                                            Issued On:\n                                                            "), _c("span", [_vm._v(_vm._s(certificate.issued_on))])])])]), _vm._v(" "), _c("div", {
       staticClass: "mt-2 flex"
     }, [_c("div", {
-      staticClass: "flex items-center text-sm text-gray-500"
+      staticClass: "flex items-center text-md text-gray-500"
     }, [_c("svg", {
       staticClass: "flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400",
       attrs: {
@@ -2878,7 +2880,7 @@ var render = function render() {
         d: "M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z",
         "clip-rule": "evenodd"
       }
-    })]), _vm._v(" "), _c("p", [_vm._v("\n                                                            Expiring On\n                                                            "), _c("span", [_vm._v(_vm._s(certificate.expired_on))])])])])])])])])]);
+    })]), _vm._v(" "), _c("p", [_vm._v("\n                                                            Expiring On:\n                                                            "), _c("span", [_vm._v(_vm._s(certificate.expired_on))])])])])])])])])]);
   }), 0)])])])])])]);
 };
 
@@ -3481,7 +3483,7 @@ var render = function render() {
     staticClass: "block text-sm font-normal text-gray-700"
   }, [_vm._v("\n                                            Remarks\n                                        ")]), _vm._v(" "), _c("div", {
     staticClass: "mt-1"
-  }, [_c("input", {
+  }, [_c("textarea", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -3489,9 +3491,6 @@ var render = function render() {
       expression: "form.remarks"
     }],
     staticClass: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm",
-    attrs: {
-      type: "text"
-    },
     domProps: {
       value: _vm.form.remarks
     },
@@ -3500,6 +3499,34 @@ var render = function render() {
         if ($event.target.composing) return;
 
         _vm.$set(_vm.form, "remarks", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "space-y-1"
+  }, [_c("label", {
+    staticClass: "block text-sm font-normal text-gray-700"
+  }, [_vm._v("\n                                            Expiry Date\n                                        ")]), _vm._v(" "), _c("label", {}), _vm._v(" "), _c("div", {
+    staticClass: "mt-1"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.expiry_date,
+      expression: "form.expiry_date"
+    }],
+    staticClass: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm",
+    attrs: {
+      type: "text",
+      placeholder: "DD/MM/YYYY"
+    },
+    domProps: {
+      value: _vm.form.expiry_date
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.form, "expiry_date", $event.target.value);
       }
     }
   })])]), _vm._v(" "), _vm._m(1)])])])])])])])]), _vm._v(" "), _c("Toast", {
@@ -3532,7 +3559,7 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", [_c("button", {
-    staticClass: "inline-flex items-center px-2.5 py-1.5 border border-transparent text-sm font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+    staticClass: "w-full flex justify-center px-2.5 py-1.5 border border-transparent text-sm font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
     attrs: {
       type: "submit"
     }
@@ -4173,12 +4200,9 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_2_
 /*!*******************************!*\
   !*** ./resources/css/app.css ***!
   \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/postcss-loader/dist/cjs.js):\nError: Cannot find module '@tailwindcss/aspect-ratio'\nRequire stack:\n- /private/var/www/personal/accredible-poc/tailwind.config.js\n- /private/var/www/personal/accredible-poc/node_modules/tailwindcss/lib/index.js\n- /private/var/www/personal/accredible-poc/webpack.mix.js\n- /private/var/www/personal/accredible-poc/node_modules/laravel-mix/setup/webpack.config.js\n- /private/var/www/personal/accredible-poc/node_modules/webpack-cli/lib/webpack-cli.js\n- /private/var/www/personal/accredible-poc/node_modules/webpack-cli/lib/bootstrap.js\n- /private/var/www/personal/accredible-poc/node_modules/webpack-cli/bin/cli.js\n- /private/var/www/personal/accredible-poc/node_modules/webpack/bin/webpack.js\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Module.require (internal/modules/cjs/loader.js:952:19)\n    at require (internal/modules/cjs/helpers.js:88:18)\n    at Object.<anonymous> (/private/var/www/personal/accredible-poc/tailwind.config.js:21:5)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Module.require (internal/modules/cjs/loader.js:952:19)\n    at processResult (/private/var/www/personal/accredible-poc/node_modules/webpack/lib/NormalModule.js:758:19)\n    at /private/var/www/personal/accredible-poc/node_modules/webpack/lib/NormalModule.js:860:5\n    at /private/var/www/personal/accredible-poc/node_modules/loader-runner/lib/LoaderRunner.js:400:11\n    at /private/var/www/personal/accredible-poc/node_modules/loader-runner/lib/LoaderRunner.js:252:18\n    at context.callback (/private/var/www/personal/accredible-poc/node_modules/loader-runner/lib/LoaderRunner.js:124:13)\n    at Object.loader (/private/var/www/personal/accredible-poc/node_modules/postcss-loader/dist/index.js:142:7)");
 
 /***/ }),
 
@@ -21473,42 +21497,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/chunk loaded */
-/******/ 	(() => {
-/******/ 		var deferred = [];
-/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
-/******/ 			if(chunkIds) {
-/******/ 				priority = priority || 0;
-/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
-/******/ 				deferred[i] = [chunkIds, fn, priority];
-/******/ 				return;
-/******/ 			}
-/******/ 			var notFulfilled = Infinity;
-/******/ 			for (var i = 0; i < deferred.length; i++) {
-/******/ 				var [chunkIds, fn, priority] = deferred[i];
-/******/ 				var fulfilled = true;
-/******/ 				for (var j = 0; j < chunkIds.length; j++) {
-/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
-/******/ 						chunkIds.splice(j--, 1);
-/******/ 					} else {
-/******/ 						fulfilled = false;
-/******/ 						if(priority < notFulfilled) notFulfilled = priority;
-/******/ 					}
-/******/ 				}
-/******/ 				if(fulfilled) {
-/******/ 					deferred.splice(i--, 1)
-/******/ 					var r = fn();
-/******/ 					if (r !== undefined) result = r;
-/******/ 				}
-/******/ 			}
-/******/ 			return result;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -21549,68 +21538,13 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	(() => {
-/******/ 		// no baseURI
-/******/ 		
-/******/ 		// object to store loaded and loading chunks
-/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {
-/******/ 			"/js/app": 0,
-/******/ 			"css/app": 0
-/******/ 		};
-/******/ 		
-/******/ 		// no chunk on demand loading
-/******/ 		
-/******/ 		// no prefetching
-/******/ 		
-/******/ 		// no preloaded
-/******/ 		
-/******/ 		// no HMR
-/******/ 		
-/******/ 		// no HMR manifest
-/******/ 		
-/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
-/******/ 		
-/******/ 		// install a JSONP callback for chunk loading
-/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var [chunkIds, moreModules, runtime] = data;
-/******/ 			// add "moreModules" to the modules object,
-/******/ 			// then flag all "chunkIds" as loaded and fire callback
-/******/ 			var moduleId, chunkId, i = 0;
-/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
-/******/ 				for(moduleId in moreModules) {
-/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
-/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
-/******/ 					}
-/******/ 				}
-/******/ 				if(runtime) var result = runtime(__webpack_require__);
-/******/ 			}
-/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
-/******/ 			for(;i < chunkIds.length; i++) {
-/******/ 				chunkId = chunkIds[i];
-/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 					installedChunks[chunkId][0]();
-/******/ 				}
-/******/ 				installedChunks[chunkId] = 0;
-/******/ 			}
-/******/ 			return __webpack_require__.O(result);
-/******/ 		}
-/******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
-/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
-/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/ 	})();
-/******/ 	
 /************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
-/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	__webpack_require__("./resources/js/app.js");
+/******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./resources/css/app.css");
 /******/ 	
 /******/ })()
 ;
