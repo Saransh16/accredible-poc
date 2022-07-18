@@ -6,6 +6,7 @@ import RegisterPage from '@/components/pages/RegisterPage.vue';
 import Dashboard from '@/components/pages/Dashboard.vue';
 import AdminContainer from '@/components/containers/AdminContainer.vue';
 import Certificates from '@/components/pages/Certificates.vue';
+import ViewCourse from '@/components/pages/ViewCourse.vue';
 
 Vue.use(Router);
 
@@ -36,7 +37,12 @@ function configRoutes() {
                 path: "/certificates",
                 name: "certificates",
                 component: Certificates
-              }         
+              },
+              {
+                path: "/courses/:id",
+                name: "view-course",
+                component: ViewCourse
+              }
             ]
         }
     ]
