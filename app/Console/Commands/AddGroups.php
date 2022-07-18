@@ -42,19 +42,19 @@ class AddGroups extends Command
     {
         $groups = [
             [
-                'name' => 'Javascript',
-                'course_name' => 'Modern Javascript Basics',
-                'course_description' => "Whether you're migrating from older JavaScript knowledge, starting fresh, or have only ever reached for something like jQuery, this series is designed for you."
+                'name' => 'Authentication',
+                'course_name' => 'Learn Socialite',
+                'course_description' => "Socialite provides you with a simple and convenient way to authenticate with OAuth providers like Facebook, Twitter, and GitHub."
             ],
             [
-                'name' => 'CSS',
-                'course_name' => 'CSS Grids Simplified',
-                'course_description' => "Grid is one of the most powerful tools in CSS, but also the most confusing one. Once you master creating layouts with CSS grids, you’ll wonder how you lived without it."
+                'name' => 'Queues',
+                'course_name' => 'Laravel Queue Mastery',
+                'course_description' => "In this series, join Mohamed Said, from the Laravel core team, as he reviews the ins and outs of how to use Laravel's high-performance queue system to run any potentially long-running task asynchronously."
             ],
             [
-                'name' => 'Laravel Forgee',
-                'course_name' => 'Learn Laravel Forge (2022 Edition)',
-                'course_description' => "In this series, Laravel core team member, James Brooks, will steer you through the ins and outs of building and configuring servers with Laravel Forge."
+                'name' => 'React',
+                'course_name' => 'Beginning React',
+                'course_description' => "React continues to be extremely popular in the front-end world. Whether you’re in the job market or are curious to explore React's massive ecosystem, learning it will help you become a better developer. In this series, we'll review the basics of using React."
             ],
         ];
 

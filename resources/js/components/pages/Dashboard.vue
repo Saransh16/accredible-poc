@@ -86,26 +86,7 @@ export default {
 
         openCourse(group_id) {
             this.$router.push({name: 'view-course', params: { id: group_id}})
-        },
-
-        completeCourse(group_id) {
-            groupService.completeCourse(group_id)
-            .then((response) => {
-                console.log(response);
-                this.showAlert('Certification completed successfully');
-            },
-            (error) => {
-                console.log(error);
-            });
-        },
-
-        showAlert(message, time=3000) {
-            this.alert.show = true;
-            this.alert.title = message;
-            setTimeout(() => {
-                this.alert.show = false;
-            }, time);
-        },        
+        }        
     }
 };
 </script>

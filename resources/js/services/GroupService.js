@@ -45,11 +45,12 @@ const GroupService = {
         })
     },
 
-    completeCourse(group_id) {
+    completeCourse(group_id, form) {
         return new Promise((res, rej) => {
             axios.post(api.completeCourse(),
             {
-                group_id : group_id
+                group_id : group_id,
+                attributes : form
             },
             {})
             .then((response) => {

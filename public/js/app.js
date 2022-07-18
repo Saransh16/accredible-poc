@@ -2224,27 +2224,6 @@ __webpack_require__.r(__webpack_exports__);
           id: group_id
         }
       });
-    },
-    completeCourse: function completeCourse(group_id) {
-      var _this2 = this;
-
-      _services_GroupService__WEBPACK_IMPORTED_MODULE_1__["default"].completeCourse(group_id).then(function (response) {
-        console.log(response);
-
-        _this2.showAlert('Certification completed successfully');
-      }, function (error) {
-        console.log(error);
-      });
-    },
-    showAlert: function showAlert(message) {
-      var _this3 = this;
-
-      var time = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3000;
-      this.alert.show = true;
-      this.alert.title = message;
-      setTimeout(function () {
-        _this3.alert.show = false;
-      }, time);
     }
   }
 });
@@ -2444,7 +2423,11 @@ __webpack_require__.r(__webpack_exports__);
       },
       group_id: '',
       group: [],
-      design: []
+      design: [],
+      form: {
+        company_name: '',
+        remarks: ''
+      }
     };
   },
   methods: {
@@ -2469,6 +2452,27 @@ __webpack_require__.r(__webpack_exports__);
       }, function (error) {
         console.log(error);
       });
+    },
+    completeCourse: function completeCourse() {
+      var _this3 = this;
+
+      _services_GroupService__WEBPACK_IMPORTED_MODULE_0__["default"].completeCourse(this.group.id, this.form).then(function (response) {
+        console.log(response);
+
+        _this3.showAlert('Certification completed successfully');
+      }, function (error) {
+        console.log(error);
+      });
+    },
+    showAlert: function showAlert(message) {
+      var _this4 = this;
+
+      var time = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3000;
+      this.alert.show = true;
+      this.alert.title = message;
+      setTimeout(function () {
+        _this4.alert.show = false;
+      }, time);
     },
     openUrl: function openUrl(url) {
       window.open(url, '_blank').focus();
@@ -3437,7 +3441,68 @@ var render = function render() {
         return _vm.openUrl(_vm.design.rasterized_content_url);
       }
     }
-  })])])])])])])]), _vm._v(" "), _c("Toast", {
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "ml-8"
+  }, [_c("div", {
+    staticClass: "text-center"
+  }, [_vm._v("\n                                    Add in custom attributes\n                                ")]), _vm._v(" "), _c("form", {
+    staticClass: "space-y-6 text-gray-700 mt-12",
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.completeCourse();
+      }
+    }
+  }, [_c("div", [_c("label", {
+    staticClass: "block text-sm font-normal text-gray-700"
+  }, [_vm._v("\n                                            Company Name\n                                        ")]), _vm._v(" "), _c("div", {
+    staticClass: "mt-1"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.company_name,
+      expression: "form.company_name"
+    }],
+    staticClass: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm",
+    domProps: {
+      value: _vm.form.company_name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.form, "company_name", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "space-y-1"
+  }, [_c("label", {
+    staticClass: "block text-sm font-normal text-gray-700"
+  }, [_vm._v("\n                                            Remarks\n                                        ")]), _vm._v(" "), _c("div", {
+    staticClass: "mt-1"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.remarks,
+      expression: "form.remarks"
+    }],
+    staticClass: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.form.remarks
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.form, "remarks", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _vm._m(1)])])])])])])])]), _vm._v(" "), _c("Toast", {
     attrs: {
       show: _vm.alert.show,
       title: _vm.alert.title,
@@ -3462,6 +3527,16 @@ var staticRenderFns = [function () {
   }, [_c("h1", {
     staticClass: "text-2xl font-semibold text-gray-900"
   }, [_vm._v("View Course")])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", [_c("button", {
+    staticClass: "inline-flex items-center px-2.5 py-1.5 border border-transparent text-sm font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("\n                                            Complete Course\n                                        ")])]);
 }];
 render._withStripped = true;
 
@@ -4036,10 +4111,11 @@ var GroupService = {
       });
     });
   },
-  completeCourse: function completeCourse(group_id) {
+  completeCourse: function completeCourse(group_id, form) {
     return new Promise(function (res, rej) {
       axios.post(_api_js__WEBPACK_IMPORTED_MODULE_0__["default"].completeCourse(), {
-        group_id: group_id
+        group_id: group_id,
+        attributes: form
       }, {}).then(function (response) {
         return res(response.data);
       }, function (error) {

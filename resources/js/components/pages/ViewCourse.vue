@@ -23,6 +23,36 @@
                                 <div class="aspect-w-2 aspect-h-2 sm:aspect-w-2 sm:aspect-h-3">
                                     <img @click="openUrl(design.rasterized_content_url)" class="object-cover shadow-lg rounded-lg" :src="design.rasterized_content_url" alt="">
                                 </div>
+                                <div class="ml-8">
+                                    <div class="text-center">
+                                        Add in custom attributes
+                                    </div>
+                                    <form @submit.prevent="completeCourse()" class="space-y-6 text-gray-700 mt-12">
+                                        <div>
+                                            <label class="block text-sm font-normal text-gray-700">
+                                                Company Name
+                                            </label>
+                                            <div class="mt-1">
+                                                <input v-model="form.company_name" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            </div>                                
+                                        </div>
+
+                                        <div class="space-y-1">
+                                            <label class="block text-sm font-normal text-gray-700">
+                                                Remarks
+                                            </label>
+                                            <div class="mt-1">
+                                                <input type="text" v-model="form.remarks" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            </div>                                
+                                        </div>
+                           
+                                        <div>
+                                            <button type="submit" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-sm font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                Complete Course
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>                                
                             </div>
                         </div>
                     </div>
@@ -61,7 +91,11 @@ export default {
             },
             group_id : '',
             group : [],
-            design : []
+            design : [],
+            form : {
+                company_name : '',
+                remarks : ''
+            }
         }
     },
     methods: {
@@ -88,6 +122,25 @@ export default {
                 console.log(error);
             })
         },
+
+        completeCourse() {
+            groupService.completeCourse(this.group.id, this.form)
+            .then((response) => {
+                console.log(response);
+                this.showAlert('Certification completed successfully');
+            },
+            (error) => {
+                console.log(error);
+            });
+        },
+
+        showAlert(message, time=3000) {
+            this.alert.show = true;
+            this.alert.title = message;
+            setTimeout(() => {
+                this.alert.show = false;
+            }, time);
+        },        
 
         openUrl(url) {
             window.open(url, '_blank').focus();

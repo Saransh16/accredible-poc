@@ -163,7 +163,7 @@ class AccredibleService {
 		    	"course_name" => $course_name,
 				"course_description" => $course_description,
     			"course_link" => $course_link,
-                'certificate_design_id' => 247808
+                'certificate_design_id' => 248128
 		    )
 		);
 
