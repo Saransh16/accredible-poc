@@ -51,6 +51,10 @@ const API = {
         return `${Base.apiUrl()}/designs/${design_id}`;
     },
 
+    expireCertificate: () => {
+        return `${Base.apiUrl()}/certifications/expire`
+    },
+
     logout: () => {
         return `${Base.apiUrl()}/logout`;
     },

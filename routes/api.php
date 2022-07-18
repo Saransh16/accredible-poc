@@ -18,5 +18,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/certifications', 'CertificationController@create');
 
+    Route::post('/certifications/expire', 'CertificationController@expireCredential');
+
     Route::post('/logout', 'AuthController@logout');
 });

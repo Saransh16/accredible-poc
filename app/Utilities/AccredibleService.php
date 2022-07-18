@@ -68,8 +68,6 @@ class AccredibleService {
 		    )
 		);
 
-        // dd($data);
-
 		$client = new \GuzzleHttp\Client();
 
 		$params = array('Authorization' => 'Token token="'.$this->getAPIKey().'"');
@@ -138,6 +136,32 @@ class AccredibleService {
 
 		$response = $client->put($this->api_endpoint.'credentials/'.$id, array(
 		    'headers' =>  $params,
+		    'json' => $data
+		));
+
+		$result = json_decode($response->getBody(), true);
+
+		return $result;
+	}
+
+	public function expire_credential($id, $recipient_name, $recipient_email, $course_id, $expired_on){
+		$data = array(
+		    "credential" => array(
+		    	"group_id" => $course_id,
+		        "recipient" => array(
+		            "name" => $recipient_name,
+		            "email" => $recipient_email
+		        ),
+		        "expired_on" => $expired_on,
+		    )
+		);
+
+		$client = new \GuzzleHttp\Client();
+
+		$params = array('Authorization' => 'Token token="'.$this->getAPIKey().'"');
+
+		$response = $client->post($this->api_endpoint.'credentials/' . $id, array(
+		    'headers' => $params,
 		    'json' => $data
 		));
 

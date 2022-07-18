@@ -36,6 +36,28 @@ class CertificationController extends Controller
         return response()->success($certificate);
     }
 
+    public function expireCredential()
+    {
+
+        $inputs = request()->all();
+
+        $expiry_date = Carbon::now()->format('d/m/Y');
+
+        $credential = $this->accredible->expire_credential($inputs['credential_id'], auth()->user()->name, auth()->user()->email, $inputs['group_id'], $expiry_date);
+
+        // $certificate = Certification::create([
+        //     'user_id' => auth()->user()->id,
+        //     'credential_id' => $credential['credential']['id'],
+        //     'url' => $credential['credential']['certificate']['image']['preview'],
+        //     'issued_on' => $credential['credential']['issued_on'],
+        //     'expired_on' => $credential['credential']['expired_on'],
+        //     'group_id' => $credential['credential']['group_id']
+        // ]);
+
+        return response()->success('Credential expired successfully');
+
+    }
+
     public function index()
     {
         $certificates = Certification::where('user_id', auth()->user()->id)->with('group')->get();
